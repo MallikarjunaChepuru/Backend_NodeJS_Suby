@@ -8,7 +8,7 @@ const productRoutes=require("./routes/productRoutes")
 const path=require("path")
 dotenv.config();
 const app = express();
-const PORT = 6060;
+const PORT =process.env.PORT|| 6060;
 app.use(express.json());
 app.use(bodyParser.json());
 mongoose
@@ -23,3 +23,8 @@ app.use("/uploads",express.static("uploads"))
 app.listen(PORT, () => {
   console.log(`Server started and running at ${PORT}`);
 });
+
+
+app.use("/",(req,res)=>{
+res.send("<h1>Welcome to suby</h1>")
+})
