@@ -6,11 +6,13 @@ const vendorRoutes = require("./routes/vendorRoutes");
 const firmRoutes=require("./routes/firmRoutes")
 const productRoutes=require("./routes/productRoutes")
 const path=require("path")
+const cors=require('cors')
 dotenv.config();
 const app = express();
 const PORT =process.env.PORT|| 6060;
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors())
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Mongodb connected successfully"))
@@ -25,6 +27,6 @@ app.listen(PORT, () => {
 });
 
 
-app.use("/",(req,res)=>{
+/*app.use("/",(req,res)=>{
 res.send("<h1>Welcome to suby</h1>")
-})
+}) */
